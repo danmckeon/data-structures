@@ -11,6 +11,18 @@ var Stack = function(init){
   }
 
 
+  this.print = function() {
+    if (this.length === 0) {
+      console.log('00000 Stack is Empty 00000')
+    } else {
+      console.log('***** Top of Stack *****');
+      for (let i = this.length - 1; i >= 0; i--) {
+        console.log(this.storage[i]);
+      }
+      console.log('##### Bottom of Stack #####')
+    }
+  }
+
   this.push = function(newElement) {
     this.storage[this.length] = newElement;
     this.length++;
@@ -34,16 +46,25 @@ var Stack = function(init){
     return this.storage[this.length - 1];
   }
 
+  this.size = function() {
+    return this.length;
+  }
+
 }
 
 let myStack = new Stack([1,2,3]);
-console.log(JSON.stringify(myStack.storage));
-console.log(myStack.length);
+myStack.print();
+console.log(myStack.size());
 myStack.push(5);
-// console.log(myVar)
-console.log(JSON.stringify(myStack.storage));
-console.log(myStack.length);
+myStack.print();
+console.log(myStack.size());
 let myPeeked = myStack.peek();
 console.log(myPeeked)
-console.log(JSON.stringify(myStack.storage));
-console.log(myStack.length);
+myStack.print();
+console.log(myStack.size());
+myStack.pop();
+myStack.pop();
+myStack.pop();
+myStack.print();
+myStack.pop();
+myStack.print();
