@@ -41,13 +41,13 @@ let Queue = function() {
 
   this.print = function() {
     if(this.isEmpty()) {
-      console.log('Queue is empty')
+      console.log('00000 Queue is Empty 00000')
     } else {
-      console.log('Next to dequeue: ')
+      console.log('***** Next to Dequeue *****')
       for(let i = dequeueCount; i < enqueueCount; i++) {
         console.log(data[i]);
       }
-      console.log('End of queue.')
+      console.log('##### Last to dequeue #####')
     }
 
   }
