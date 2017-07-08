@@ -1,53 +1,54 @@
 var Stack = function(init){
-  this.storage = {};
+  let data = {};
+  let count;
   if (init) {
     let i;
     for(i = 0; i < init.length; i++) {
-      this.storage[i] = init[i];
+      data[i] = init[i];
     }
-    this.length = i;
+    count = i;
   } else {
-    this.length = 0;
+    count = 0;
   }
 
 
   this.print = function() {
-    if (this.length === 0) {
+    if (count === 0) {
       console.log('00000 Stack is Empty 00000')
     } else {
       console.log('***** Top of Stack *****');
-      for (let i = this.length - 1; i >= 0; i--) {
-        console.log(this.storage[i]);
+      for (let i = count - 1; i >= 0; i--) {
+        console.log(data[i]);
       }
       console.log('##### Bottom of Stack #####')
     }
   }
 
   this.push = function(newElement) {
-    this.storage[this.length] = newElement;
-    this.length++;
+    data[count] = newElement;
+    count++;
     return newElement;
   }
 
   this.pop = function() {
-    if(this.length === 0) {
+    if(count === 0) {
       return undefined;
     }
-    let popped = this.storage[this.length - 1];
-    delete this.storage[this.length - 1];
-    this.length--;
+    let popped = data[count - 1];
+    delete data[count - 1];
+    count--;
     return popped;
   }
 
   this.peek = function() {
-    if(this.length === 0) {
+    if(count === 0) {
       return undefined;
     }
-    return this.storage[this.length - 1];
+    return data[count - 1];
   }
 
   this.size = function() {
-    return this.length;
+    return count;
   }
 
 }
