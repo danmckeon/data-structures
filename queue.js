@@ -1,7 +1,7 @@
-var Queue = function() {
+let Queue = function() {
 //   ARRAY IMPLEMENTATION
 
-//   var data = [];
+//   let data = [];
 //   this.enqueue = function(element) {
 //     data.push(element);
 //   }
@@ -23,9 +23,9 @@ var Queue = function() {
 
 //   OBJECT IMPLEMENTATION
 
-  var data = {};
-  var enqueueCount = 0;
-  var dequeueCount = 0;
+  let data = {};
+  let enqueueCount = 0;
+  let dequeueCount = 0;
 
   this.enqueue = function(element) {
     data[enqueueCount] = element;
@@ -33,7 +33,7 @@ var Queue = function() {
   }
 
   this.dequeue = function() {
-    var dequeued = data[dequeueCount];
+    let dequeued = data[dequeueCount];
     delete data[dequeueCount];
     dequeueCount++;
     return dequeued;
@@ -44,7 +44,7 @@ var Queue = function() {
       console.log('Queue is empty')
     } else {
       console.log('Next to dequeue: ')
-      for(var i = dequeueCount; i < enqueueCount; i++) {
+      for(let i = dequeueCount; i < enqueueCount; i++) {
         console.log(data[i]);
       }
       console.log('End of queue.')
@@ -66,15 +66,15 @@ var Queue = function() {
 }
 
 
-var myQueue = new Queue();
+let myQueue = new Queue();
 myQueue.print();
-myQueue.enqueue("One");
+myQueue.enqueue('One');
 console.log(myQueue.isEmpty())
 console.log(myQueue.front())
 console.log(myQueue.size());
-myQueue.enqueue("Two");
-myQueue.enqueue("Three");
+myQueue.enqueue('Two');
+myQueue.enqueue('Three');
 myQueue.print();
-var testDequeue = myQueue.dequeue();
+let testDequeue = myQueue.dequeue();
 myQueue.print();
 console.log(myQueue.isEmpty())
