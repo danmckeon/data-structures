@@ -56,6 +56,60 @@ let LinkedList = function() {
     return (length === 0);
   }
 
+  this.indexOf = function(element) {
+    if (!head) {
+      return -1;
+    } else {
+      let currentNode = head;
+      let currentIndex = 0;
+      while (currentNode) {
+        if (currentNode.element === element) {
+          return currentIndex;
+        }
+        currentIndex++;
+        currentNode = currentNode.next;
+      }
+    }
+    return -1;
+  }
+
+  this.elementAt = function(searchIndex) {
+    let currentIndex = 0;
+    let currentNode = head;
+    if (searchIndex >= length) {
+      return false;
+    } else {
+      while (currentIndex !== searchIndex) {
+        currentIndex++;
+        currentNode = currentNode.next;
+      }
+      return currentNode.element;
+    }
+  }
+
+  this.addAt = function(element, addIndex) {
+    if (addIndex >= length) {
+      return false;
+    }
+    let addNode = new Node(element);
+    if (addIndex === 0) {
+      addNode.next = head;
+      head = addNode;
+    } else {
+      let previousNode = head;
+      let currentNode = head.next;
+      let currentIndex = 1;
+      while (currentIndex !== addIndex) {
+        previousNode = currentNode;
+        currentNode = currentNode.next;
+        currentIndex++;
+      }
+      addNode.next = currentNode;
+      previousNode.next = addNode;
+    }
+    return addNode;
+  }
+
   this.print = function() {
     console.log('***** Start of Linked List *****');
     let currentNode = head;
@@ -80,11 +134,20 @@ myLinkedList.add('Linked');
 myLinkedList.add('List');
 console.log(myLinkedList.isEmpty())
 myLinkedList.print();
+console.log('Current Index of "Linked": ' + myLinkedList.indexOf('Linked'))
+console.log('Current Element of Index 2: ' + myLinkedList.elementAt(2))
 myLinkedList.remove('My');
+myLinkedList.print();
+myLinkedList.addAt('My', 0);
+console.log('After adding back in "My" at index 2...')
 myLinkedList.print();
 myLinkedList.remove('This');
 myLinkedList.remove('Is');
 myLinkedList.remove('Linked');
+myLinkedList.print();
+console.log('Current Index of "List": ' + myLinkedList.indexOf('List'))
+console.log('Current Element of Index 2: ' + myLinkedList.elementAt(2))
 myLinkedList.remove('List');
 myLinkedList.print();
+console.log('Current Index of "Linked": ' + myLinkedList.indexOf('Linked'))
 console.log(myLinkedList.isEmpty())
